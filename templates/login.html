@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image2Text</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      background: #5256ad;
+    }
+
+    input,
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    }
+
+    .tip {
+      font-size: 30px;
+      margin: 40px auto 50px;
+      text-align: center;
+      color:#fff;
+    }
+
+    .cont {
+      overflow: hidden;
+      position: relative;
+      width: 900px;
+      height: 550px;
+      margin: 0 auto 100px;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    .form {
+      position: relative;
+      width: 640px;
+      height: 100%;
+      transition: transform 1.2s ease-in-out;
+      padding: 50px 30px 0;
+    }
+
+    .sub-cont {
+      overflow: hidden;
+      position: absolute;
+      left: 640px;
+      top: 0;
+      width: 900px;
+      height: 100%;
+      padding-left: 260px;
+      background: #fff;
+      transition: transform 1.2s ease-in-out;
+    }
+
+    .cont.s--signup .sub-cont {
+      transform: translate3d(-640px, 0, 0);
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      width: 260px;
+      height: 36px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .img {
+      overflow: hidden;
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100%;
+      padding-top: 360px;
+    }
+
+    .img:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 900px;
+      height: 100%;
+      background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); /*url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg");*/
+      background-size: cover;
+      transition: transform 1.2s ease-in-out;
+    }
+
+    .img:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .cont.s--signup .img:before {
+      transform: translate3d(640px, 0, 0);
+    }
+
+    .img__text {
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      top: 50px;
+      width: 100%;
+      padding: 0 20px;
+      text-align: center;
+      color: #fff;
+      transition: transform 1.2s ease-in-out;
+    }
+
+    .img__text h2 {
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .img__text p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cont.s--signup .img__text.m--up {
+      transform: translateX(520px);
+    }
+
+    .img__text.m--in {
+      transform: translateX(-520px);
+    }
+
+    .cont.s--signup .img__text.m--in {
+      transform: translateX(0);
+    }
+
+    .img__btn {
+      overflow: hidden;
+      z-index: 2;
+      position: relative;
+      width: 100px;
+      height: 36px;
+      margin: 0 auto;
+      background: transparent;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .img__btn:after {
+      content: "";
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #fff;
+      border-radius: 30px;
+    }
+
+    .img__btn span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      transition: transform 1.2s;
+    }
+
+    .img__btn span.m--in {
+      transform: translateY(-72px);
+    }
+
+    .cont.s--signup .img__btn span.m--in {
+      transform: translateY(0);
+    }
+
+    .cont.s--signup .img__btn span.m--up {
+      transform: translateY(72px);
+    }
+
+    h2 {
+      width: 100%;
+      font-size: 26px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      width: 260px;
+      margin: 25px auto 0;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    label span {
+      font-size: 12px;
+      color: #6e6565;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .eyecon {
+    position:relative;
+    display: inline-block;
+    bottom:25px;
+    left:115px;
+    width:10px;
+    height: 10px;
+    margin-bottom: 0px;
+    color: #6e6565;
+    cursor: pointer;
+    }
+
+    .fa-eye {
+      color: black;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      padding-bottom: 5px;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .forgot-pass {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #cfcfcf;
+    }
+
+    .submit {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      background: #d4af7a;
+      text-transform: uppercase;
+    }
+
+    .fb-btn {
+      border: 2px solid #d3dae9;
+      color: #8fa1c7;
+    }
+
+    .fb-btn span {
+      font-weight: bold;
+      color: #455a81;
+    }
+
+    .sign-in {
+      transition-timing-function: ease-out;
+    }
+
+    .cont.s--signup .sign-in {
+      transition-timing-function: ease-in-out;
+      transition-duration: 1.2s;
+      transform: translate3d(640px, 0, 0);
+    }
+
+    .sign-up {
+      transform: translate3d(-900px, 0, 0);
+    }
+
+    .cont.s--signup .sign-up {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .icon-link {
+      position: absolute;
+      left: 5px;
+      bottom: 5px;
+      width: 32px;
+    }
+
+    .icon-link img {
+      width: 100%;
+      vertical-align: top;
+    }
+
+    .icon-link--twitter {
+      left: auto;
+      right: 5px;
+    }
+  </style>
+
+</head>
+
+<body>
+  {% with messages = get_flashed_messages() %} 
+    {% if messages %} 
+      {% for message in messages %}
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+      {% endfor %} 
+    {% endif %} 
+  {% endwith %}
+  <p class="tip">Create an account to use Image2Text</p>
+  <div class="cont">
+    <form class="form sign-in" action="http://localhost:5000/userlogin" method="POST">
+      <h2>Welcome back,</h2>
+      <label>
+        <span>Email</span>
+        <input type="email" name="loginemail"/>
+      </label>
+      <label id="show_hide_password_1">
+        <span>Password</span>
+        <input type="password" name="loginpass"/>
+        <i class="fa fa-eye-slash eyecon" aria-hidden="true"></i>
+      </label>
+      <button class="submit">Sign In</button>
+      <!-- <button type="button" class="fb-btn">Connect with <span>Gmail</span></button> -->
+    </form>
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img__text m--up">
+          <h2>New here?</h2>
+          <p>Create an account to discover great amount of new opportunities!</p>
+        </div>
+        <div class="img__text m--in">
+          <h2>Login</h2>
+          <p>If you already has an account, just sign in. We've missed you!</p>
+        </div>
+        <div class="img__btn">
+          <span class="m--up">Sign Up</span>
+          <span class="m--in">Sign In</span>
+        </div>
+      </div>
+      <form class="form sign-up" action="http://localhost:5000/verify" method="POST">
+        <h2>Create Account</h2>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name"/>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email"/>
+        </label>
+        <label id="show_hide_password_2">
+          <span>Password</span>
+          <input type="password" name="password"/>
+          <i class="fa fa-eye-slash eyecon"></i>
+        </label>
+        <label id="show_hide_password_3" style="margin-top:0px;">
+          <span> Confirm Password</span>
+          <input type="password" name="con_password"/>
+          <i class="fa fa-eye-slash eyecon"></i>
+        </label>
+        <button class="submit">Sign Up</button>
+        <!-- <button type="button" class="fb-btn">Join with <span>Gmail</span></button> -->
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.img__btn').addEventListener('click', function () {
+      document.querySelector('.cont').classList.toggle('s--signup');
+    });
+
+    $(document).ready(function() {
+    $("#show_hide_password_1 i").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password_1 input').attr("type") == "text"){
+            $('#show_hide_password_1 input').attr('type', 'password');
+            $('#show_hide_password_1 i').addClass( "fa-eye-slash" );
+            $('#show_hide_password_1 i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password_1 input').attr("type") == "password"){
+            $('#show_hide_password_1 input').attr('type', 'text');
+            $('#show_hide_password_1 i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password_1 i').addClass( "fa-eye" );
+        }
+    });
+    $("#show_hide_password_2 i").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password_2 input').attr("type") == "text"){
+            $('#show_hide_password_2 input').attr('type', 'password');
+            $('#show_hide_password_2 i').addClass( "fa-eye-slash" );
+            $('#show_hide_password_2 i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password_2 input').attr("type") == "password"){
+            $('#show_hide_password_2 input').attr('type', 'text');
+            $('#show_hide_password_2 i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password_2 i').addClass( "fa-eye" );
+        }
+    });
+    $("#show_hide_password_3 i").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password_3 input').attr("type") == "text"){
+            $('#show_hide_password_3 input').attr('type', 'password');
+            $('#show_hide_password_3 i').addClass( "fa-eye-slash" );
+            $('#show_hide_password_3 i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password_3 input').attr("type") == "password"){
+            $('#show_hide_password_3 input').attr('type', 'text');
+            $('#show_hide_password_3 i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password_3 i').addClass( "fa-eye" );
+        }
+    });
+});
+  </script>
+
+</body>
+
+</html>

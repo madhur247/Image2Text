@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>Image2Text : File Download</title>
+    <link rel="stylesheet" href="../static/css/download.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+
+    <!-- Main view of our gallary -->
+    <!--    <div class="main_view">-->
+    <!--        <img src={{ img }} id="main">-->
+    <!--    </div>-->
+    <div class="navbar">
+        <label id="title">Image2Text</label>
+        <a href="http://localhost:5000/login_index">Home</a>
+        <a href="http://localhost:5000/">Logout</a>
+        <label id="username">Hello, {{ user }}</label>
+    </div>
+    <div class="wrapper">
+        <div class="box1"><img src={{ img }}></div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <textarea readonly id="op_text" class="op_text" name="op_text" rows="10" cols="110">
+        {{ op_text }}
+    </textarea>
+    <!-- <div class="form-holder">
+        <label class="container">Text File (.txt)
+            <input type="radio" name="Filetype" value="Text" style="margin-left:0" id="radio" />
+            <span class="checkmark"></span>
+            </label>
+            <label class="container">PDF File (.pdf)
+            <input type="radio" name="Filetype" value="PDF" style="margin-left:0" id="radio"/>
+            <span class="checkmark"></span>
+            </label>
+            <label class="container">MS Word File (.docx)
+            <input type="radio" name="Filetype" value="DOC" style="margin-left:0" id="radio"/>
+            <span class="checkmark"></span>
+            </label>
+    </div> -->
+    <!-- {% if pack!="free" %}
+    <div class="form-holder">
+    <a href=".\static\output\output.txt" download="output.txt">
+        <button class="btn1"><i class="fa fa-download"></i>Download Text</button>
+    </a>
+    
+    <a href=".\static\output\output.pdf" download="output.pdf">
+        <button class="btn2"><i class="fa fa-download"></i>Download PDF</button>
+    </a>
+    
+    <a href=".\static\output\output.docx" download="output.docx">
+        <button class="btn3"><i class="fa fa-download"></i>Download DOCX</button>
+    </a>
+    </div>
+    {% else %}
+    <a href=".\static\output\output.txt" download="output.txt">
+        <button class="btn"><i class="fa fa-download"></i>Download Text</button>
+    </a>
+    {% endif %} -->
+
+    <script src="../static/javascript/script.js"></script>
+
+    <div class="form-holder dropdown">
+        <button class="dropbtn"><i class="fa fa-download"></i> Download</button>
+        <div class="dropdown-content">
+            <a href=".\static\output\output.txt" download="output.txt">text</a>
+            {% if pack!="free" %}
+            <a href=".\static\output\output.pdf" download="output.pdf">pdf</a>
+            <a href=".\static\output\output.docx" download="output.docx">docx</a>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>

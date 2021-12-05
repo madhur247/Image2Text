@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+html,
+body {
+  position: relative;
+  height: 100%;
+  margin:0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #5256ad;
+}
+
+/*.bg-img {
+	background-image: url(https://www.securitymagazine.com/ext/resources/images/network-data-cyber-security-freepik.jpg?1623358764);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+    filter: blur(2px);
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}*/
+
+.bg-text {
+  font-size:35px;
+	color: white;
+	font-weight: bold;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	padding: 20px;
+}
+
+.form-structor {
+  background-color: #222;
+  border-radius: 15px;
+  left: 38%;
+  top: 12%;
+  height: 550px;
+  width: 350px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.78);
+}
+.form-structor::after {
+  content: "";
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center-left;
+  background-size: 600px;
+  background-image: url("https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80");
+}
+.form-structor .SelectAccountType {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  width: 70%;
+  z-index: 5;
+  -webkit-transition: all 0.3s ease;
+}
+
+.form-structor .SelectAccountType .form-title {
+	color: white;
+	font-size: 1.5em;
+	padding-left: 6px;
+}
+.form-structor .SelectAccountType .form-holder {
+  background-color: rgba(0,0,0,0);
+  overflow: hidden;
+  margin-top: 40px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+
+.form-structor .SelectAccountType .form-holder .container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	font-size: 25px;
+	-webkit-user-select: none;
+	user-select: none;
+	color: black;
+}
+
+.form-structor .SelectAccountType .form-holder .container input{
+  height: 0px;
+  position: absolute;
+  width: 0;
+  opacity:0;
+  cursor: pointer;
+}
+
+.form-structor .SelectAccountType .form-holder .container .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+}
+
+.form-structor .SelectAccountType .form-holder .container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+.form-structor .SelectAccountType .form-holder .container:hover input:not(:checked) ~ .checkmark {
+	height: 27px;
+	width: 27px;
+	-webkit-transition: all 0.3s ease;
+}
+
+.form-structor .SelectAccountType .form-holder .container input:checked ~ .checkmark {
+background-color: #2196F3;
+}
+
+.form-structor .SelectAccountType .form-holder .container .checkmark:after {
+	content: "";
+	display: none;
+	position: absolute;
+}
+
+.form-structor .SelectAccountType .form-holder .container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.form-structor .SelectAccountType .form-holder .container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.form-structor .SelectAccountType .submit-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 35px auto;
+  padding: 15px 45px;
+  width: 90%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
+}
+.form-structor .SelectAccountType .submit-btn:hover {
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.form-structor .SelectAccountType .submit-btn:active {
+  transition: all 0.1s ease;
+  background-color: rgba(0, 0, 0, 0.9);
+}

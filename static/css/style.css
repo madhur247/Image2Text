@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  
+  .alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+  }
+  
+  .close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+  }
+
+body:not(.navbar) {
+    display: block;
+    min-height: 100vh;
+    background: #5256ad;
+}
+
+.navbar {
+    overflow: hidden;
+    display: block;
+    margin-top: 10px;
+}
+
+.navbar a, #title{
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px
+}
+
+.navbar label {
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.navbar #username {
+    float: right;
+}
+
+.drag-area {
+    border: 2px dashed #fff;
+    height: 500px;
+    width: 700px;
+    margin: auto;
+    margin-top: 70px;
+    vertical-align: centre;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.drag-area.active {
+    border: 2px solid #fff;
+}
+
+.drag-area .icon {
+    font-size: 100px;
+    color: #fff;
+}
+
+.drag-area header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.drag-area span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+}
+
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+#convert_button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+    right: 705px;
+    bottom: 40px;
+    display: none;
+    position: absolute
+}

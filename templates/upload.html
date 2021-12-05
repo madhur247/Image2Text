@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image2Text : File Upload</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta http-equiv="Pragma" content="no-cache" />
+</head>
+
+<body>
+	<div class="navbar">
+        <label id="title">Image2Text</label>
+        <a href="http://localhost:5000/login_index" >Home</a>
+        <a href="http://localhost:5000/">Logout</a>
+        <label id="username">Hello, {{ user }}</label>
+	</div>
+    <div>
+    <form action="http://localhost:5000/convert" method="POST" id="convert_form" enctype="multipart/form-data">
+        <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Drag & Drop to Upload File</header>
+            <span>OR</span>
+            <button class="browse_button" type="button">Browse File</button>
+        </div>
+        <input type="file" name="file" id="mainimg" hidden>
+        <input type="hidden" name="base64data" id="dropimg">
+    </form>
+	
+    <button class="button2" id="convert_button" onclick="document.getElementById('convert_form').submit();" name="convert-btn">Convert</button>
+    </div>
+    <script src="../static/javascript/script.js"></script>
+	
+	
+	
+	
+</body>
+
+</html>

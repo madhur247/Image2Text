@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Packages</title>
+
+    <style>
+        body {
+            font: 400 15px Lato, sans-serif;
+            line-height: 1.8;
+            color: #818181;
+            background: #5256ad;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            color: #ffffff;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .container-fluid {
+            padding: 60px 15px;
+        }
+
+        .panel {
+            border: 3px solid #ebfc04;
+            border-radius: 0 !important;
+            transition: box-shadow 0.5s;
+        }
+
+        .panel:hover {
+            box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+        }
+
+        .panel-footer .btn:hover {
+            border: 1px solid #06ebf3;
+            background-color: #fff !important;
+            color: #1af507;
+        }
+
+        .panel-heading {
+            color: #fff !important;
+            background-color: #f4511e !important;
+            padding: 25px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .panel-footer {
+            background-color: white !important;
+        }
+
+        .panel-footer h3 {
+            font-size: 32px;
+        }
+
+        .panel-footer h4 {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .panel-footer .btn {
+            margin: 15px 0;
+            background-color: #fdc305;
+            color: #fff;
+        }
+
+        @media screen and (max-width: 768px) {
+            .col-sm-4 {
+                text-align: center;
+                margin: 25px 0;
+            }
+
+            .btn-lg {
+                width: 100%;
+                margin-bottom: 35px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="pricing" class="container-fluid">
+        <div class="text-center">
+            <h2>PLANS</h2>
+            <h4>Choose a payment plan that works for you</h4>
+        </div>
+        <form class="row slideanim" method="POST" id="pay_form">
+            <div class="col-sm-3 col-xs-12">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>Free Trial</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>for 15 days</strong></p>
+                    </div>
+                    <div class="panel-footer">
+                        <h3>$0</h3>
+                        <a href='#'>
+                            <button class="btn btn-lg" onclick="document.getElementById('pay_form').action = 'http://localhost:5000/payment/free'">Start your free trial</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>Basic</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>for 30 days</strong></p>
+                    </div>
+                    <div class="panel-footer">
+                        <h3>$5</h3>
+                        <a href='#'>
+                            <button class="btn btn-lg" onclick="document.getElementById('pay_form').action = 'http://localhost:5000/payment/basic'">Pay</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>Pro</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>for 180 days</strong></p>
+                    </div>
+                    <div class="panel-footer">
+                        <h3>$25</h3>
+                        <a href='#'>
+                            <button class="btn btn-lg" onclick="document.getElementById('pay_form').action = 'http://localhost:5000/payment/pro'">Pay</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h1>Premium</h1>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>for 365 days</strong></p>
+                    </div>
+                    <div class="panel-footer">
+                        <h3>$40</h3>
+                        <a href='#'>
+                            <button class="btn btn-lg" onclick="document.getElementById('pay_form').action = 'http://localhost:5000/payment/premium'">Pay</button></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
