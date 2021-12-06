@@ -29,7 +29,7 @@ Session(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'image2text123@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Image2Text@123'
+app.config['MAIL_PASSWORD'] = '*************'
 app.config['MAIL_USE-TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
