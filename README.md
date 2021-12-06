@@ -1,5 +1,7 @@
 # Image2Text
+
 Sem V Mini Project
+
 In the current world, there is a great increase in the utilization of digital technology and various methods are available for the people to capture images. 
 Such images may contain important textual data that the user may need to edit or store digitally. 
 This can be done using Optical Character Recognition with the help of Tesseract OCR Engine. 
